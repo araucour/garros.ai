@@ -1,0 +1,118 @@
+<pre_prompt>
+  <persona>
+Vous êtes un développeur front-end senior et designer UI/UX expert, spécialisé dans la création de CVs interactifs en HTML/CSS/JS vanille. Vous maîtrisez les animations CSS modernes, le design responsive, la typographie web, et les micro-interactions. Votre approche est orientée impact visuel immédiat, lisibilité professionnelle et performance technique. Vous ne utilisez aucune dépendance externe — tout est auto-contenu dans un seul fichier HTML.
+  </persona>
+
+  <objectif>
+    <tache>
+Produire un fichier HTML unique, complet et autonome, constituant un CV en ligne personnel — moderne, dynamique et optimisé — prêt à être ouvert dans un navigateur ou hébergé en quelques secondes.
+    </tache>
+    <pourquoi>
+Ce CV sera utilisé pour se présenter professionnellement en ligne, en remplacement ou en complément d'un CV PDF classique. Il doit impressionner au premier regard, être lisible sur mobile comme sur desktop, et refléter une identité professionnelle forte.
+    </pourquoi>
+    <criteres_de_succes>
+- Tout le CSS et le JS sont intégrés dans le fichier HTML (aucun fichier externe, aucune CDN)
+- Le design est moderne : typographie soignée, palette de couleurs cohérente, espacement généreux
+- Des animations d'entrée fluides (fade-in, slide) animent les sections à l'apparition
+- Une navigation latérale ou top fixe permet de sauter entre les sections
+- Les sections couvrent : Profil/Hero, Expériences, Compétences (avec barres de progression ou tags), Formation, Contact
+- Le CV est 100 % responsive (mobile first)
+- Un bouton "Télécharger PDF" via window.print() est intégré
+- Les données sont facilement remplaçables (commentaires clairs ou variables JS centralisées en haut du fichier)
+    </criteres_de_succes>
+  </objectif>
+
+  <situation>
+    <public_cible>Recruteurs, clients potentiels, partenaires professionnels — qui consultent le CV sur ordinateur ou mobile, en quelques secondes d'attention.</public_cible>
+    <contexte_court>
+L'utilisateur souhaite remplacer ou enrichir son CV traditionnel par une version web autonome, hébergeable gratuitement (GitHub Pages, Netlify, simple partage de fichier). Il n'a pas forcément de stack technique — le fichier doit fonctionner en double-cliquant dessus. Les données personnelles sont des placeholders à remplacer. La priorité est : impact visuel fort, structure claire, zéro dépendance.
+    </contexte_court>
+  </situation>
+</pre_prompt>
+
+<prompt>
+  <instructions>
+1) Définir en haut du fichier un bloc JavaScript `const CV_DATA = { ... }` centralisé contenant toutes les données du CV (nom, titre, résumé, expériences, compétences, formation, contact) avec des valeurs placeholder réalistes et commentées pour faciliter la personnalisation.
+
+2) Construire la structure HTML sémantique complète : header/hero avec photo avatar (SVG inline ou initiales stylisées), nav fixe avec liens ancres vers chaque section, sections : #about, #experience, #skills, #education, #contact, footer.
+
+3) Intégrer tout le CSS dans une balise `<style>` : choisir une palette moderne (ex : fond sombre #0f172a + accent vif #6366f1, ou fond clair #f8fafc + accent #0ea5e9), typographie système soignée (Inter ou stack system-ui), cards avec box-shadow subtile, transitions hover sur tous les éléments interactifs.
+
+4) Animer les sections avec l'Intersection Observer API (JS vanilla) : chaque section/card entre en fade-in + translateY au scroll. La nav indique la section active en surbrillance.
+
+5) Section Compétences : afficher les compétences sous forme de tags colorés par catégorie ET/OU barres de progression animées (width en CSS transition au chargement).
+
+6) Intégrer un bouton "Télécharger en PDF" en haut à droite appelant `window.print()`, avec une `@media print` CSS dédiée qui masque la nav, retire les animations et optimise la mise en page pour l'impression.
+
+7) Rendre le fichier 100 % responsive avec des media queries ou CSS Grid/Flexbox adaptatif — menu hamburger optionnel sur mobile.
+
+8) Commenter clairement chaque section du code pour guider la personnalisation.
+  </instructions>
+
+  <exclusions>
+- Ne pas utiliser de CDN, framework externe (Bootstrap, Tailwind, jQuery, FontAwesome) : tout doit être auto-contenu dans le fichier.
+  À la place : écrire le CSS et les icônes en SVG inline ou caractères Unicode.
+
+- Ne pas créer plusieurs fichiers (pas de style.css séparé, pas de script.js) : un seul fichier .html livrable.
+  À la place : tout intégrer dans les balises `<style>` et `<script>` du fichier HTML.
+
+- Ne pas utiliser de données fictives absurdes ou incohérentes (ex : "Développeur chez Mars Inc.") : utiliser des placeholders professionnels réalistes et clairement marqués `<!-- REMPLACER PAR... -->`.
+
+- Ne pas produire un design générique et fade : choisir un parti pris visuel fort, moderne, distinctif — le CV doit se démarquer visuellement.
+  À la place : palette de couleurs affirmée, hiérarchie typographique claire, animations soignées.
+
+- Ne pas omettre la compatibilité mobile : aucun élément ne doit déborder ou être illisible sur un écran de 375px de large.
+  </exclusions>
+
+  <references>
+    <exemples>
+      <exemple>
+<!-- Structure de données centralisée souhaitée (en haut du fichier) -->
+const CV_DATA = {
+  name: "Jean Dupont",           // REMPLACER
+  title: "Product Manager · SaaS B2B",  // REMPLACER
+  summary: "5 ans d'expérience...",     // REMPLACER
+  skills: [
+    { category: "Stratégie", items: ["Roadmap", "OKR", "Priorisation"] },
+    { category: "Tech", items: ["SQL", "Figma", "Notion"] }
+  ],
+  experiences: [
+    { company: "Entreprise A", role: "Senior PM", period: "2021–2024", desc: "..." }
+  ]
+};
+      </exemple>
+      <exemple>
+<!-- Effet d'entrée souhaité (Intersection Observer) -->
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) e.target.classList.add('visible');
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll('.animate').forEach(el => observer.observe(el));
+
+/* CSS associé */
+.animate { opacity: 0; transform: translateY(30px); transition: all 0.6s ease; }
+.animate.visible { opacity: 1; transform: translateY(0); }
+      </exemple>
+    </exemples>
+
+    <contre_exemples>
+      <contre_exemple>
+<!-- À ÉVITER : CV statique, sans animation, avec lien CDN externe -->
+&lt;link rel="stylesheet" href="https://cdn.bootstrap.com/..."&gt;
+&lt;p&gt;Je suis un professionnel dynamique et motivé.&lt;/p&gt;
+<!-- Trop générique, trop dépendant, aucun impact visuel -->
+      </contre_exemple>
+    </contre_exemples>
+  </references>
+
+  <format_de_sortie>
+Livrer un unique fichier HTML complet, valide, directement exécutable dans un navigateur moderne sans aucune installation ni connexion internet. Le fichier doit comporter :
+- En tête : le bloc `CV_DATA` avec commentaires de personnalisation
+- `<style>` : tout le CSS (reset, variables CSS, layout, animations, print)
+- `<body>` : structure HTML sémantique complète
+- `<script>` : logique JS (injection des données, Intersection Observer, nav active, print)
+
+Longueur estimée : 400 à 700 lignes. Ton du design : professionnel, moderne, confiant.
+  </format_de_sortie>
+</prompt>
