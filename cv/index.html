@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Arnaud de Raucourt — Expert Transformation Digitale &amp; AI</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20100%20100'%3E%3Ccircle%20cx='50'%20cy='50'%20r='47'%20fill='%23CF5E38'/%3E%3Cline%20x1='38'%20y1='66'%20x2='62'%20y2='34'%20stroke='%23fff'%20stroke-width='9'%20stroke-linecap='round'%3E%3CanimateTransform%20attributeName='transform'%20type='rotate'%20from='0%2050%2050'%20to='360%2050%2050'%20dur='6s'%20repeatCount='indefinite'/%3E%3C/line%3E%3C/svg%3E">
 <style>
 /* ============================================================
    VARIABLES — Palette Claude (warm cream / coral)
@@ -59,6 +60,10 @@ nav{
 nav.scrolled{background:rgba(250,249,247,.98);box-shadow:0 1px 14px rgba(0,0,0,.09)}
 .nav-logo{display:flex;align-items:center;gap:10px;font-size:.95rem;font-weight:700;letter-spacing:-.02em;color:var(--text)}
 .nlm{width:34px;height:34px;border-radius:8px;flex-shrink:0;background:linear-gradient(135deg,var(--accent),#E8A07A);display:flex;align-items:center;justify-content:center;font-size:.78rem;font-weight:800;color:#fff}
+.nlm-logo{width:34px;height:34px;flex-shrink:0;display:flex}
+.nlm-logo svg{display:block;width:34px;height:34px}
+.nlm-slash{transform-box:view-box;transform-origin:50px 50px;animation:slashspin 6s linear infinite}
+@keyframes slashspin{to{transform:rotate(360deg)}}
 .nav-logo em{color:var(--accent);font-style:normal}
 .nav-links{display:flex;gap:2px;list-style:none}
 .nav-links a{color:var(--text-m);font-size:.84rem;font-weight:500;padding:6px 13px;border-radius:7px;transition:color .2s,background .2s}
@@ -256,6 +261,23 @@ h2.st{font-size:clamp(1.75rem,4vw,2.4rem);font-weight:800;letter-spacing:-.04em;
 .sb:hover{background:var(--bg3);border-color:var(--accent)}
 .sn{font-size:1.7rem;font-weight:800;letter-spacing:-.03em;color:var(--accent)}
 .sl2{font-size:.7rem;color:var(--text-d);margin-top:2px;line-height:1.4}
+/* Formulaire de contact (identique au site web — POST /api/contact) */
+.cf-card{margin-top:22px;padding:32px}
+.cf{display:flex;flex-direction:column;gap:16px}
+.cf-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.cf-field{display:flex;flex-direction:column;gap:6px}
+.cf-field label{font-size:.78rem;font-weight:600;color:var(--text-m)}
+.cf-field input,.cf-field textarea{width:100%;font:inherit;font-size:.9rem;color:var(--text);background:var(--bg2);border:1px solid var(--border);border-radius:9px;padding:11px 14px;transition:border-color .2s,box-shadow .2s}
+.cf-field textarea{resize:vertical;min-height:118px;line-height:1.6}
+.cf-field input::placeholder,.cf-field textarea::placeholder{color:var(--text-d)}
+.cf-field input:focus,.cf-field textarea:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px rgba(207,94,56,.14)}
+.cf-error{font-size:.84rem;color:var(--accent3)}
+.cf-submit{align-self:flex-start;margin-top:4px;font-size:.86rem;padding:11px 22px}
+.cf-submit:disabled{opacity:.6;cursor:not-allowed}
+.cf-success{text-align:center;padding:30px;border:1px solid rgba(207,94,56,.3);background:rgba(207,94,56,.05);border-radius:12px}
+.cf-success-t{font-size:1.15rem;font-weight:700;color:var(--text)}
+.cf-success-s{margin-top:6px;color:var(--text-m);font-size:.9rem}
+@media(max-width:560px){.cf-row{grid-template-columns:1fr}}
 /* ============================================================
    FOOTER
    ============================================================ */
@@ -325,7 +347,7 @@ footer{background:var(--navy);color:rgba(255,255,255,.45);padding:26px 36px;disp
 <!-- NAV -->
 <nav id="main-nav">
   <div class="nav-logo">
-    <div class="nlm">AR</div>
+    <span class="nlm-logo" aria-label="garros.ai"><svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="47" fill="var(--accent)"/><line class="nlm-slash" x1="38" y1="66" x2="62" y2="34" stroke="#fff" stroke-width="9" stroke-linecap="round"/></svg></span>
     Arnaud <em>de Raucourt</em>
   </div>
   <ul class="nav-links">
@@ -368,15 +390,15 @@ footer{background:var(--navy);color:rgba(255,255,255,.45);padding:26px 36px;disp
       <div class="h-meta">
         <span class="hm">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-          Laval, Pays de la Loire
+          Paris, Laval, Morlaix
         </span>
         <span class="hm">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.68 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.59 1.18h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9a16 16 0 0 0 6.97 6.97l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 23 18z"/></svg>
-          06&nbsp;37&nbsp;17&nbsp;83&nbsp;30
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          <a href="https://garros.ai" target="_blank" style="text-decoration:none;font-weight:600"><span style="color:var(--text)">garros</span><span style="color:var(--accent)">.ai</span></a>
         </span>
         <span class="hm">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-          arnaud.de.raucourt@gmail.com
+          <a href="#contact" style="text-decoration:none;font-weight:600;color:inherit">Contact</a>
         </span>
       </div>
       <div class="h-cta">
@@ -578,8 +600,7 @@ footer{background:var(--navy);color:rgba(255,255,255,.45);padding:26px 36px;disp
       <div class="ct-c cd an">
         <p class="ct-i">Vous pilotez une transformation digitale, souhaitez automatiser des processus critiques ou intégrer l'IA dans vos opérations ? Échangeons.</p>
         <div class="cls">
-          <a href="mailto:arnaud.de.raucourt@gmail.com" class="cl"><div class="cl-ic em">✉️</div><div><div class="cl-lb">Email</div><div class="cl-vl">arnaud.de.raucourt@gmail.com</div></div></a>
-          <a href="tel:+33637178330" class="cl"><div class="cl-ic ph">📞</div><div><div class="cl-lb">Téléphone</div><div class="cl-vl">06 37 17 83 30</div></div></a>
+          <a href="https://garros.ai" target="_blank" class="cl"><div class="cl-ic em"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#CF5E38" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div><div><div class="cl-lb">Site web</div><div class="cl-vl"><span style="color:var(--text)">garros</span><span style="color:var(--accent)">.ai</span></div></div></a>
           <a href="https://linkedin.com/in/raucourt" target="_blank" class="cl"><div class="cl-ic li"><svg width="17" height="17" viewBox="0 0 24 24" fill="#1A2744"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg></div><div><div class="cl-lb">LinkedIn</div><div class="cl-vl">linkedin.com/in/raucourt</div></div></a>
           <a href="https://www.skool.com/qg-ia/about?ref=4f9aed8efe47461085e12929bf3d6c3f" target="_blank" class="cl"><div class="cl-ic ai">🤖</div><div><div class="cl-lb">Communauté IA</div><div class="cl-vl">Rejoindre le QG de l'IA</div></div></a>
           <a href="https://calendar.app.google/yeW2XeK4hNamzkUo9" target="_blank" class="cl" style="border-color:var(--teal);background:rgba(42,122,127,.06)"><div class="cl-ic ph" style="background:rgba(42,122,127,.14)">📅</div><div><div class="cl-lb">Agenda</div><div class="cl-vl">Prendre rendez-vous</div></div></a>
@@ -595,6 +616,35 @@ footer{background:var(--navy);color:rgba(255,255,255,.45);padding:26px 36px;disp
         </div>
       </div>
     </div>
+    <div class="cd an cf-card">
+      <div class="ey" style="margin-bottom:18px">Envoyer un message</div>
+      <form id="contact-form" class="cf" novalidate>
+        <div class="cf-row">
+          <div class="cf-field">
+            <label for="cf-name">Nom *</label>
+            <input id="cf-name" name="name" type="text" required autocomplete="name" placeholder="Votre nom">
+          </div>
+          <div class="cf-field">
+            <label for="cf-email">Email *</label>
+            <input id="cf-email" name="email" type="email" required autocomplete="email" placeholder="vous@entreprise.fr">
+          </div>
+        </div>
+        <div class="cf-field">
+          <label for="cf-company">Entreprise</label>
+          <input id="cf-company" name="company" type="text" autocomplete="organization" placeholder="Votre entreprise">
+        </div>
+        <div class="cf-field">
+          <label for="cf-message">Message *</label>
+          <textarea id="cf-message" name="message" required rows="5" placeholder="Décrivez votre contexte et votre besoin en quelques lignes."></textarea>
+        </div>
+        <p class="cf-error" id="cf-error" role="alert" hidden></p>
+        <button type="submit" class="btn-pdf cf-submit" id="cf-submit">Envoyer le message</button>
+      </form>
+      <div class="cf-success" id="cf-success" hidden>
+        <p class="cf-success-t">Message envoyé. Merci.</p>
+        <p class="cf-success-s">Je vous réponds rapidement, généralement sous 24 à 48 heures.</p>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -602,9 +652,11 @@ footer{background:var(--navy);color:rgba(255,255,255,.45);padding:26px 36px;disp
 <footer>
   <div class="fc">&copy; 2026 Arnaud de Raucourt &nbsp;·&nbsp; Senior Digital &amp; AI Consultant</div>
   <div class="fl2">
-    <a href="mailto:arnaud.de.raucourt@gmail.com">Email</a>
+    <a href="#contact">Contact</a>
+    <a href="https://garros.ai" target="_blank">garros.ai</a>
     <a href="https://linkedin.com/in/raucourt" target="_blank">LinkedIn</a>
     <a href="https://www.ludosln.net/rejoignez-ma-communaute-ia/" target="_blank">QG de l'IA</a>
+    <a href="/mentions-legales">Mentions légales</a>
     <a href="#" onclick="window.print();return false;">PDF</a>
   </div>
 </footer>
@@ -624,6 +676,27 @@ new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting)x.target.querySel
 window.addEventListener('load',()=>{
   ['.ph-wrap','.h-badge','.h-name','.h-title','.h-sub','.h-meta','.h-cta'].forEach((s,i)=>{const el=document.querySelector(s);if(!el)return;el.style.cssText=`opacity:0;transform:translateY(18px);transition:opacity .6s cubic-bezier(0.16,1,0.3,1) ${i*.1}s,transform .6s cubic-bezier(0.16,1,0.3,1) ${i*.1}s`;requestAnimationFrame(()=>requestAnimationFrame(()=>{el.style.opacity='1';el.style.transform='translateY(0)';}));});
 });
+// Formulaire de contact : envoi vers l'API du site (même origine quand servi sur garros.ai/cv)
+(function(){
+  var form=document.getElementById('contact-form');
+  if(!form)return;
+  var btn=document.getElementById('cf-submit'),err=document.getElementById('cf-error'),ok=document.getElementById('cf-success'),f=form.elements;
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    err.hidden=true;
+    var orig=btn.textContent;
+    btn.disabled=true;btn.textContent='Envoi en cours…';
+    fetch('/api/contact',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({
+      name:f['name'].value.trim(),email:f['email'].value.trim(),company:f['company'].value.trim(),message:f['message'].value.trim()
+    })}).then(function(res){
+      if(!res.ok)return res.json().catch(function(){return{};}).then(function(d){throw new Error(d.error||"Échec de l'envoi.");});
+      form.hidden=true;ok.hidden=false;
+    }).catch(function(ex){
+      err.textContent=(ex&&ex.message)?ex.message:"L'envoi a échoué. Réessayez ou écrivez à contact@garros.ai.";
+      err.hidden=false;btn.disabled=false;btn.textContent=orig;
+    });
+  });
+})();
 </script>
 </body>
 </html>

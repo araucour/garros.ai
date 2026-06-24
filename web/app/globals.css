@@ -1,0 +1,81 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-cream text-espresso font-sans antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-display;
+  }
+}
+
+@layer components {
+  .container-content {
+    @apply mx-auto w-full max-w-content px-6 sm:px-8;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center rounded-full bg-copper px-7 py-3.5 text-base font-medium text-cream transition-colors hover:bg-copper-dark focus:outline-none focus-visible:ring-2 focus-visible:ring-copper focus-visible:ring-offset-2 focus-visible:ring-offset-cream;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center rounded-full border border-espresso/20 px-7 py-3.5 text-base font-medium text-espresso transition-colors hover:border-copper hover:text-copper focus:outline-none focus-visible:ring-2 focus-visible:ring-copper focus-visible:ring-offset-2 focus-visible:ring-offset-cream;
+  }
+
+  .eyebrow {
+    @apply text-sm font-semibold uppercase tracking-[0.18em] text-copper;
+  }
+}
+
+/* Animation douce d'apparition au chargement */
+@layer utilities {
+  .fade-in-up {
+    animation: fadeInUp 0.7s ease-out both;
+  }
+
+  /* Slash du logo : rotation continue autour de son propre centre */
+  .logo-slash {
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: logoSpin 6s linear infinite;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes logoSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .fade-in-up {
+    animation: none;
+  }
+  .logo-slash {
+    animation: none;
+  }
+}
