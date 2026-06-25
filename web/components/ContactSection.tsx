@@ -16,19 +16,6 @@ export default function ContactSection() {
             à 48 heures.
           </p>
 
-          <div className="mt-10 space-y-4 text-espresso/80">
-            <p>
-              <span className="font-medium text-espresso">LinkedIn — </span>
-              <a
-                href={site.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-copper hover:underline"
-              >
-                linkedin.com/in/raucourt
-              </a>
-            </p>
-          </div>
         </div>
 
         <div className="rounded-3xl border border-espresso/10 bg-ivory p-8">
