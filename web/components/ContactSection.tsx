@@ -18,12 +18,6 @@ export default function ContactSection() {
 
           <div className="mt-10 space-y-4 text-espresso/80">
             <p>
-              <span className="font-medium text-espresso">Email — </span>
-              <a href={`mailto:${site.email}`} className="text-copper hover:underline">
-                {site.email}
-              </a>
-            </p>
-            <p>
               <span className="font-medium text-espresso">LinkedIn — </span>
               <a
                 href={site.linkedin}

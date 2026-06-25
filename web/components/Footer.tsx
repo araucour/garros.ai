@@ -39,9 +39,9 @@ export default function Footer() {
           </h3>
           <ul className="mt-4 space-y-2.5 text-sm text-espresso/80">
             <li>
-              <a href={`mailto:${site.email}`} className="transition-colors hover:text-copper">
-                {site.email}
-              </a>
+              <Link href="/#contact" className="transition-colors hover:text-copper">
+                Contact
+              </Link>
             </li>
             <li>
               <a
