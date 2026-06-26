@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## État du projet
 
-Site Next.js **scaffoldé et fonctionnel** (build + lint OK). Pas encore déployé.
+Site Next.js **en production sur [garros.ai](https://garros.ai)** (Vercel Pro, build + lint OK).
 
 - Contenu éditorial centralisé dans [lib/content.ts](lib/content.ts) — **éditer là** pour changer les textes, pas dans les composants.
 - Site en **page unique** (`app/page.tsx`) : toutes les sections sur `/` avec navigation par ancres (`#methode`, `#audit`, `#goal`, `#build`, `#loop`, `#about`, `#contact`). Seules `/` et `/mentions-legales` sont des routes réelles.
